@@ -1,10 +1,3 @@
-aliyun-oss:
-  endpoint: yourEndpoint
-  access-key-id: yourAccessKeyId
-  access-key-secret: yourAccessKeySecret
-  bucket-name: yourBucketName
-  bucket-url: yourBucketUrl
-  base-path: yourBasePath
 autocode:
   transfer-restart: true
   root: E:\project\Golang\gin-vue-admin
@@ -20,16 +13,6 @@ autocode:
   web-api: /api
   web-form: /view
   web-table: /view
-aws-s3:
-  bucket: xxxxx-10005608
-  region: ap-shanghai
-  endpoint: ""
-  s3-force-path-style: false
-  disable-ssl: false
-  secret-id: your-secret-id
-  secret-key: your-secret-key
-  base-url: https://gin.vue.admin
-  path-prefix: yan/server
 captcha:
   key-long: 6
   img-width: 240
@@ -68,14 +51,6 @@ db-list:
   max-open-conns: 100
   log-mode: ""
   log-zap: false
-email:
-  to: xxx@qq.com
-  port: 465
-  from: xxx@163.com
-  host: smtp.163.com
-  is-ssl: true
-  secret: xxx
-  nickname: test
 excel:
   dir: ./resource/excel/
 hua-wei-obs:
@@ -84,11 +59,6 @@ hua-wei-obs:
   endpoint: you-endpoint
   access-key: you-access-key
   secret-key: you-secret-key
-jwt:
-  signing-key: 64ccd9e8-994d-4d56-9a5f-19710293c62a
-  expires-time: 7d
-  buffer-time: 1d
-  issuer: qmPlus
 local:
   path: uploads/file
   store-path: uploads/file
@@ -148,14 +118,6 @@ pgsql:
   max-open-conns: 100
   log-mode: ""
   log-zap: false
-qiniu:
-  zone: ZoneHuaDong
-  bucket: ""
-  img-path: ""
-  use-https: false
-  access-key: ""
-  secret-key: ""
-  use-cdn-domains: false
 redis:
   db: 0
   addr: 127.0.0.1:6379
@@ -170,13 +132,6 @@ system:
   iplimit-count: 15000
   iplimit-time: 3600
   router-prefix: ""
-tencent-cos:
-  bucket: xxxxx-10005608
-  region: ap-shanghai
-  secret-id: your-secret-id
-  secret-key: your-secret-key
-  base-url: https://gin.vue.admin
-  path-prefix: yan/server
 timer:
   start: true
   spec: '@daily'
