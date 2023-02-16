@@ -1,11 +1,13 @@
 package global
 
 import (
-	"github.com/go-redis/redis/v8"
 	"sync"
 
-	"github.com/songzhibin97/gkit/cache/local_cache"
+	"github.com/go-redis/redis/v8"
+
 	"go-generate/utils/timer"
+
+	"github.com/songzhibin97/gkit/cache/local_cache"
 
 	"golang.org/x/sync/singleflight"
 
@@ -18,15 +20,15 @@ import (
 )
 
 var (
-	GVA_DB     *gorm.DB
-	GVA_DBList map[string]*gorm.DB
-	GVA_REDIS  *redis.Client
-	GVA_CONFIG config.Server
-	GVA_VP     *viper.Viper
-	// GVA_LOG    *oplogging.Logger
-	GVA_LOG                 *zap.Logger
-	GVA_Timer               timer.Timer = timer.NewTimerTask()
-	GVA_Concurrency_Control             = &singleflight.Group{}
+	YAN_DB     *gorm.DB
+	YAN_DBList map[string]*gorm.DB
+	YAN_REDIS  *redis.Client
+	YAN_CONFIG config.Server
+	YAN_VP     *viper.Viper
+	// YAN_LOG    *oplogging.Logger
+	YAN_LOG                 *zap.Logger
+	YAN_Timer               timer.Timer = timer.NewTimerTask()
+	YAN_Concurrency_Control             = &singleflight.Group{}
 
 	BlackCache local_cache.Cache
 	lock       sync.RWMutex
@@ -36,14 +38,14 @@ var (
 func GetGlobalDBByDBName(dbname string) *gorm.DB {
 	lock.RLock()
 	defer lock.RUnlock()
-	return GVA_DBList[dbname]
+	return YAN_DBList[dbname]
 }
 
 // MustGetGlobalDBByDBName 通过名称获取db 如果不存在则panic
 func MustGetGlobalDBByDBName(dbname string) *gorm.DB {
 	lock.RLock()
 	defer lock.RUnlock()
-	db, ok := GVA_DBList[dbname]
+	db, ok := YAN_DBList[dbname]
 	if !ok || db == nil {
 		panic("db no init")
 	}

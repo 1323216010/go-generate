@@ -2,15 +2,16 @@ package system
 
 import (
 	"errors"
+	"go-generate/global"
+	"go-generate/model/system/request"
+	"strconv"
+	"sync"
+
 	"github.com/casbin/casbin/v2"
 	"github.com/casbin/casbin/v2/model"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
 	_ "github.com/go-sql-driver/mysql"
-	"go-generate/global"
-	"go-generate/model/system/request"
 	"go.uber.org/zap"
-	"strconv"
-	"sync"
 )
 
 //@author: [piexlmax](https://github.com/piexlmax)
@@ -49,7 +50,7 @@ func (casbinService *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos [
 //@return: error
 
 func (casbinService *CasbinService) UpdateCasbinApi(oldPath string, newPath string, oldMethod string, newMethod string) error {
-	err := global.GVA_DB.Model(&gormadapter.CasbinRule{}).Where("v1 = ? AND v2 = ?", oldPath, oldMethod).Updates(map[string]interface{}{
+	err := global.YAN_DB.Model(&gormadapter.CasbinRule{}).Where("v1 = ? AND v2 = ?", oldPath, oldMethod).Updates(map[string]interface{}{
 		"v1": newPath,
 		"v2": newMethod,
 	}).Error
@@ -104,7 +105,7 @@ var (
 
 func (casbinService *CasbinService) Casbin() *casbin.CachedEnforcer {
 	once.Do(func() {
-		a, _ := gormadapter.NewAdapterByDB(global.GVA_DB)
+		a, _ := gormadapter.NewAdapterByDB(global.YAN_DB)
 		text := `
 		[request_definition]
 		r = sub, obj, act

@@ -12,6 +12,7 @@ import (
 	"go-generate/config"
 	"go-generate/global"
 	"go-generate/initialize/internal"
+
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 )
@@ -19,7 +20,7 @@ import (
 // GormMssql 初始化Mssql数据库
 // Author [LouisZhang](191180776@qq.com)
 func GormMssql() *gorm.DB {
-	m := global.GVA_CONFIG.Mssql
+	m := global.YAN_CONFIG.Mssql
 	if m.Dbname == "" {
 		return nil
 	}

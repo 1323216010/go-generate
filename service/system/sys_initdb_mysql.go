@@ -6,14 +6,16 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/gookit/color"
 	"go-generate/config"
+
+	"github.com/gookit/color"
 
 	"go-generate/utils"
 
-	uuid "github.com/satori/go.uuid"
 	"go-generate/global"
 	"go-generate/model/system/request"
+
+	uuid "github.com/satori/go.uuid"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -30,14 +32,14 @@ func (h MysqlInitHandler) WriteConfig(ctx context.Context) error {
 	if !ok {
 		return errors.New("mysql config invalid")
 	}
-	global.GVA_CONFIG.System.DbType = "mysql"
-	global.GVA_CONFIG.Mysql = c
-	global.GVA_CONFIG.JWT.SigningKey = uuid.NewV4().String()
-	cs := utils.StructToMap(global.GVA_CONFIG)
+	global.YAN_CONFIG.System.DbType = "mysql"
+	global.YAN_CONFIG.Mysql = c
+	global.YAN_CONFIG.JWT.SigningKey = uuid.NewV4().String()
+	cs := utils.StructToMap(global.YAN_CONFIG)
 	for k, v := range cs {
-		global.GVA_VP.Set(k, v)
+		global.YAN_VP.Set(k, v)
 	}
-	return global.GVA_VP.WriteConfig()
+	return global.YAN_VP.WriteConfig()
 }
 
 // EnsureDB 创建数据库并初始化 mysql
@@ -66,7 +68,7 @@ func (h MysqlInitHandler) EnsureDB(ctx context.Context, conf *request.InitDB) (n
 	}), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true}); err != nil {
 		return ctx, err
 	}
-	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
+	global.YAN_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
 	next = context.WithValue(next, "db", db)
 	return next, err
 }

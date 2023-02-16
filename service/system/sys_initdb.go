@@ -7,8 +7,9 @@ import (
 	"fmt"
 	"go-generate/global"
 	"go-generate/model/system/request"
-	"gorm.io/gorm"
 	"sort"
+
+	"gorm.io/gorm"
 )
 
 const (
@@ -112,7 +113,7 @@ func (initDBService *InitDBService) InitDB(conf request.InitDB) (err error) {
 	}
 
 	db := ctx.Value("db").(*gorm.DB)
-	global.GVA_DB = db
+	global.YAN_DB = db
 
 	if err = initHandler.InitTables(ctx, initializers); err != nil {
 		return err

@@ -1,8 +1,8 @@
 package {{.Package}}
 
 import (
-	"yan/server/api/v1"
-	"yan/server/middleware"
+	"go-generate/api/v1"
+	"go-generate/middleware"
 	"github.com/gin-gonic/gin"
 )
 

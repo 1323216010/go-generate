@@ -1,10 +1,10 @@
 package {{.Package}}
 
 import (
-	"yan/server/global"
-	"yan/server/model/{{.Package}}"
-	"yan/server/model/common/request"
-    {{.Package}}Req "yan/server/model/{{.Package}}/request"
+	"go-generate/global"
+	"go-generate/model/{{.Package}}"
+	"go-generate/model/common/request"
+    {{.Package}}Req "go-generate/model/{{.Package}}/request"
     {{- if .AutoCreateResource }}
     "gorm.io/gorm"
     {{- end}}
@@ -15,7 +15,7 @@ type {{.StructName}}Service struct {
 
 {{- $db := "" }}
 {{- if eq .BusinessDB "" }}
- {{- $db = "global.GVA_DB" }}
+ {{- $db = "global.YAN_DB" }}
 {{- else}}
  {{- $db =  printf "global.MustGetGlobalDBByDBName(\"%s\")" .BusinessDB   }}
 {{- end}}

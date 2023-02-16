@@ -1,8 +1,8 @@
 package request
 
 import (
-	"yan/server/model/{{.Package}}"
-	"yan/server/model/common/request"
+	"go-generate/model/{{.Package}}"
+	"go-generate/model/common/request"
 	"time"
 )
 

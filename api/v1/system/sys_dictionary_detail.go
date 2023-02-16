@@ -1,12 +1,13 @@
 package system
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-generate/global"
 	"go-generate/model/common/response"
 	"go-generate/model/system"
 	"go-generate/model/system/request"
 	"go-generate/utils"
+
+	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
@@ -30,7 +31,7 @@ func (s *DictionaryDetailApi) CreateSysDictionaryDetail(c *gin.Context) {
 	}
 	err = dictionaryDetailService.CreateSysDictionaryDetail(detail)
 	if err != nil {
-		global.GVA_LOG.Error("创建失败!", zap.Error(err))
+		global.YAN_LOG.Error("创建失败!", zap.Error(err))
 		response.FailWithMessage("创建失败", c)
 		return
 	}
@@ -55,7 +56,7 @@ func (s *DictionaryDetailApi) DeleteSysDictionaryDetail(c *gin.Context) {
 	}
 	err = dictionaryDetailService.DeleteSysDictionaryDetail(detail)
 	if err != nil {
-		global.GVA_LOG.Error("删除失败!", zap.Error(err))
+		global.YAN_LOG.Error("删除失败!", zap.Error(err))
 		response.FailWithMessage("删除失败", c)
 		return
 	}
@@ -80,7 +81,7 @@ func (s *DictionaryDetailApi) UpdateSysDictionaryDetail(c *gin.Context) {
 	}
 	err = dictionaryDetailService.UpdateSysDictionaryDetail(&detail)
 	if err != nil {
-		global.GVA_LOG.Error("更新失败!", zap.Error(err))
+		global.YAN_LOG.Error("更新失败!", zap.Error(err))
 		response.FailWithMessage("更新失败", c)
 		return
 	}
@@ -110,7 +111,7 @@ func (s *DictionaryDetailApi) FindSysDictionaryDetail(c *gin.Context) {
 	}
 	reSysDictionaryDetail, err := dictionaryDetailService.GetSysDictionaryDetail(detail.ID)
 	if err != nil {
-		global.GVA_LOG.Error("查询失败!", zap.Error(err))
+		global.YAN_LOG.Error("查询失败!", zap.Error(err))
 		response.FailWithMessage("查询失败", c)
 		return
 	}
@@ -135,7 +136,7 @@ func (s *DictionaryDetailApi) GetSysDictionaryDetailList(c *gin.Context) {
 	}
 	list, total, err := dictionaryDetailService.GetSysDictionaryDetailInfoList(pageInfo)
 	if err != nil {
-		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		global.YAN_LOG.Error("获取失败!", zap.Error(err))
 		response.FailWithMessage("获取失败", c)
 		return
 	}

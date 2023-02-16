@@ -4,6 +4,7 @@ import (
 	"go-generate/config"
 	"go-generate/global"
 	"go-generate/initialize/internal"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -12,7 +13,7 @@ import (
 // Author [piexlmax](https://github.com/piexlmax)
 // Author [SliverHorn](https://github.com/SliverHorn)
 func GormMysql() *gorm.DB {
-	m := global.GVA_CONFIG.Mysql
+	m := global.YAN_CONFIG.Mysql
 	if m.Dbname == "" {
 		return nil
 	}

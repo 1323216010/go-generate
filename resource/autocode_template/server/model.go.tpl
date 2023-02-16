@@ -2,13 +2,13 @@
 package {{.Package}}
 
 import (
-	"yan/server/global"
+	"go-generate/global"
 	{{ if .HasTimer }}"time"{{ end }}
 )
 
 // {{.StructName}} 结构体
 type {{.StructName}} struct {
-      global.GVA_MODEL {{- range .Fields}}
+      global.YAN_MODEL {{- range .Fields}}
             {{- if eq .FieldType "enum" }}
       {{.FieldName}}  string `json:"{{.FieldJson}}" form:"{{.FieldJson}}" gorm:"column:{{.ColumnName}};type:enum({{.DataTypeLong}});comment:{{.Comment}};"`
             {{- else if ne .FieldType "string" }}

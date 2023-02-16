@@ -145,7 +145,7 @@ timer:
     interval: 168h
 zap:
   level: info
-  prefix: '[yan/server]'
+  prefix: '[go-generate]'
   format: console
   director: log
   encode-level: LowercaseColorLevelEncoder

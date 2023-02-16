@@ -11,15 +11,15 @@ import (
 )
 
 func Timer() {
-	if global.GVA_CONFIG.Timer.Start {
-		for i := range global.GVA_CONFIG.Timer.Detail {
+	if global.YAN_CONFIG.Timer.Start {
+		for i := range global.YAN_CONFIG.Timer.Detail {
 			go func(detail config.Detail) {
 				var option []cron.Option
-				if global.GVA_CONFIG.Timer.WithSeconds {
+				if global.YAN_CONFIG.Timer.WithSeconds {
 					option = append(option, cron.WithSeconds())
 				}
-				_, err := global.GVA_Timer.AddTaskByFunc("ClearDB", global.GVA_CONFIG.Timer.Spec, func() {
-					err := utils.ClearTable(global.GVA_DB, detail.TableName, detail.CompareField, detail.Interval)
+				_, err := global.YAN_Timer.AddTaskByFunc("ClearDB", global.YAN_CONFIG.Timer.Spec, func() {
+					err := utils.ClearTable(global.YAN_DB, detail.TableName, detail.CompareField, detail.Interval)
 					if err != nil {
 						fmt.Println("timer error:", err)
 					}
@@ -27,7 +27,7 @@ func Timer() {
 				if err != nil {
 					fmt.Println("add timer error:", err)
 				}
-			}(global.GVA_CONFIG.Timer.Detail[i])
+			}(global.YAN_CONFIG.Timer.Detail[i])
 		}
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"go-generate/config"
 	"go-generate/global"
 	"go-generate/initialize/internal"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -12,7 +13,7 @@ import (
 // Author [piexlmax](https://github.com/piexlmax)
 // Author [SliverHorn](https://github.com/SliverHorn)
 func GormPgSql() *gorm.DB {
-	p := global.GVA_CONFIG.Pgsql
+	p := global.YAN_CONFIG.Pgsql
 	if p.Dbname == "" {
 		return nil
 	}
